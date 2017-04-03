@@ -58,11 +58,11 @@ func (ll *DoubleLinkedList) getNode(index int) *node {
 	return node
 }
 
-// Slice of the linked list
-func (ll *DoubleLinkedList) Slice(begin int, end int) []int {
-	slice := make([]int, end-begin+1)
+// Convert linked list into an array
+func (ll *DoubleLinkedList) Slice() []int {
+	slice := make([]int, ll.count)
 	node := ll.head
-	for i := begin; i <= end; i++ {
+	for i := 0; i < ll.count; i++ {
 		slice[i] = node.value
 		node = node.next
 	}
@@ -84,33 +84,33 @@ func (ll *DoubleLinkedList) print() {
 	if ll.count == 0 {
 		fmt.Println("Empty linked list")
 	} else {
-		n := ll.head
-		for n.next != nil {
+		for n := ll.head; n.next != nil; n = n.next {
 			fmt.Print(n.value, " -> ")
-			n = n.next
 		}
-		fmt.Println(n.value)
+		fmt.Println(ll.tail.value)
 	}
 }
 
 // Delete a node by value
-func (ll *DoubleLinkedList) deleteNode(value int) *DoubleLinkedList {
-	n := ll.head
+func (ll *DoubleLinkedList) remove(value int) {
+	for n := ll.head; n != nil; n = n.next {
+		if n.value == value {
+			ll.deleteNode(n)
+		}
+	}
+}
 
-	if n.value == value {
+// Delete a node by node
+func (ll *DoubleLinkedList) deleteNode(n *node) {
+	ll.count--
+	if n == ll.head {
 		ll.head = ll.head.next
 		ll.head.prev = nil
-		return ll
+	} else if n == ll.tail {
+		ll.tail = ll.tail.prev
+		ll.tail.next = nil
+	} else {
+		n.prev.next = n.next
+		n.next.prev = n.prev
 	}
-
-	for n.next != nil {
-		if n.next.value == value {
-			n.next = n.next.next
-			n.next.next.prev = n.prev
-			return ll
-		}
-		n = n.next
-	}
-
-	return ll
 }

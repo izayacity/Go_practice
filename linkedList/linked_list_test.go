@@ -18,8 +18,8 @@ func TestLinkedListInsertAndGet(t *testing.T) {
 		actual[i] = ll.Get(i)
 	}
 
-	ll.deleteNode(8)
-	ll.print()
+	//ll.remove(8)
+	//ll.print()
 
 	if ll.Len() != len(vals) {
 		t.Error(
