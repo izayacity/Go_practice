@@ -1,5 +1,8 @@
 package linkedList
 
+/*
+2.1 Remove Dups: Remove duplicates from an unsorted linked list without a temp buffer
+*/
 func (ll *DoubleLinkedList) removeDups() {
 	seen := make(map[int]struct{})
 	node := ll.head
