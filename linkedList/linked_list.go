@@ -1,6 +1,7 @@
 package linkedList
 
 import "fmt"
+import "log"
 
 type DoubleLinkedList struct {
 	head  *node
@@ -74,6 +75,18 @@ func (ll *DoubleLinkedList) Get(index int) int {
 	return ll.getNode(index).value
 }
 
+// Get the value in the linked list by index
+func (ll *DoubleLinkedList) GetIndex(n *node) int {
+	if n == nil {
+		log.Fatal("Error: Nil node\n")
+	}
+	i := 0
+	for temp := ll.head; temp != n; temp = temp.next {
+		i++
+	}
+	return i
+}
+
 // Length of the linked list
 func (ll *DoubleLinkedList) Len() int {
 	return ll.count
@@ -113,4 +126,5 @@ func (ll *DoubleLinkedList) deleteNode(n *node) {
 		n.prev.next = n.next
 		n.next.prev = n.prev
 	}
+	n = nil
 }
