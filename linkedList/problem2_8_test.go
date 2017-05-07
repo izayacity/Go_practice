@@ -1,6 +1,7 @@
 package linkedList
 
-/*
+import "testing"
+
 // Create a list with given values.
 // Point tail to given index, creating a loop.
 func CreateLoopedList(vals []int, index int) *DoubleLinkedList {
@@ -58,4 +59,3 @@ func TestFindLoopNodePositive(t *testing.T) {
 		}
 	}
 }
-*/
