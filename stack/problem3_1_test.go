@@ -1,6 +1,10 @@
 package stack
 
-/*
+import (
+	"reflect"
+	"testing"
+)
+
 func TestSliceMultiStack(t *testing.T) {
 	// Set up data.
 	vals1 := []int{1, 2, 3, 4, 5}
@@ -63,4 +67,3 @@ func TestSliceMultiStack(t *testing.T) {
 		t.Fatalf("Expected: %v, actual: %v\n", expected, actual)
 	}
 }
-*/

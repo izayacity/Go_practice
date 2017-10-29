@@ -75,7 +75,7 @@ func (ll *DoubleLinkedList) Get(index int) int {
 	return ll.getNode(index).value
 }
 
-// Get the value in the linked list by index
+// Get the value in the linked list by a node
 func (ll *DoubleLinkedList) GetIndex(n *node) int {
 	if n == nil {
 		log.Fatal("Error: Nil node\n")
