@@ -6,7 +6,7 @@ import (
 	"github.com/izayacity/Go_practice/cache"
 )
 
-func TestLRUCache(t *testing.T) {
+func TestLRUCache_1(t *testing.T) {
 	lru := cache.GetLRUCache(2)
 	lru.Put(1, 1)
 	lru.Put(2, 2)
@@ -46,5 +46,17 @@ func TestLRUCache(t *testing.T) {
 
 	if !reflect.DeepEqual(expected, actual) {
 		t.Fatalf("Test 4: Expected: %v, actual: %v\n", expected, actual)
+	}
+}
+
+func TestLRUCache_2(t *testing.T) {
+	lru := cache.GetLRUCache(1)
+	lru.Put(2, 1)
+
+	expected := 1
+	actual := lru.Get(2)
+
+	if !reflect.DeepEqual(expected, actual) {
+		t.Fatalf("Test 1: Expected: %v, actual: %v\n", expected, actual)
 	}
 }

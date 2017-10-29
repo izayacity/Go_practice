@@ -47,11 +47,15 @@ func (lru *LRUCache) deleteNode (node *LRUNode) {
 		return
 	}
 	if node == lru.head {
-		node.next.prev = nil
 		lru.head = node.next
+		if node.next != nil {
+			node.next.prev = nil
+		}
 	} else if node == lru.tail {
-		node.prev.next = nil
 		lru.tail = node.prev
+		if node.prev != nil {
+			node.prev.next = nil
+		}
 	} else {
 		node.prev.next = node.next
 		node.next.prev = node.prev
